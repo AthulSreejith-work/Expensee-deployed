@@ -1,5 +1,10 @@
-const app = require("../backend/server");
+const app = require("../server");
 
-module.exports = (req, res) => {
-  app(req, res);
+module.exports = async (req, res) => {
+  try {
+    app(req, res);
+  } catch (err) {
+    console.error("Server error:", err);
+    res.status(500).send("Internal Server Error");
+  }
 };
