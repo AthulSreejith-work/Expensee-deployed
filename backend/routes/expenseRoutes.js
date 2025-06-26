@@ -9,6 +9,11 @@ const { protect } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.send("Expense route root working");
+});
+
+
 router.post("/add", protect, addExpense);
 router.get("/get", protect, getAllExpenses);
 router.get("/downloadexcel", protect, downloadExpenseExcel);

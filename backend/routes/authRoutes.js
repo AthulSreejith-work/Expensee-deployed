@@ -8,6 +8,11 @@ const {
 const upload = require("../middleware/uploadMiddleware")
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.send("Expense route root working");
+});
+
+
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/getUser", protect, getUserInfo);

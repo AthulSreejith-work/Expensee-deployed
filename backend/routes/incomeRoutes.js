@@ -9,6 +9,11 @@ const { protect } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
+
+router.get("/", (req, res) => {
+  res.send("income route root working");
+});
+
 router.post("/add", protect, addIncome);
 router.get("/get", protect, getAllIncome);
 router.get("/downloadexcel", protect, downloadIncomeExcel);

@@ -6,4 +6,9 @@ const router = express.Router();
 
 router.get("/", protect, getDashboardData);
 
+router.get("/", (req, res) => {
+  res.send("Dashboard route root working");
+});
+
+
 module.exports = router;

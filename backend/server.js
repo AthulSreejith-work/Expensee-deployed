@@ -10,13 +10,11 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
 app.use(express.json());
 
@@ -28,8 +26,11 @@ app.use("/api/v1/expense", expenseRoutes);
 app.use("/api/v1/dashboard", dashboardRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// ❌ Remove this line:
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// ✅ Add this route to prevent "CANNOT GET /" error
+app.get("/", (req, res) => {
+  res.send("Backend is working!");
+});
 
-// ✅ Export the app for Vercel:
+
+// ✅ Export app for Vercel deployment
 module.exports = app;

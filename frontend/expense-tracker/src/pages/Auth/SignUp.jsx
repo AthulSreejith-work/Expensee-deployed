@@ -95,7 +95,7 @@ return (
             value={email}
             onChange={({ target }) => setEmail(target.value)}
             label="Email Address"
-            placeholder="john@example.com"
+            placeholder="athulsreejith@gmail.com"
             type="text"
           />
           <div className="col-span-2">
